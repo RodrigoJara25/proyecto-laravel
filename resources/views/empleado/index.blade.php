@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1 class="text-center text-primary m-3">¡Hola, Bootstrap con Vite en Laravel!</h1>
+    <h2 class="text-center text-secondary">Empleados</h2>
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -29,7 +30,14 @@
                 <td>{{ $empleado->ApellidoPaterno }}</td>
                 <td>{{ $empleado->ApellidoMaterno }}</td>
                 <td>{{ $empleado->Correo }}</td>
-                <td>Editar | Eliminar</td>
+                <td>Editar | 
+                    
+                    <form action="{{url ('/empleado/'.$empleado->id)}}" method="post">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <input type="submit" value="Eliminar" onclick="return confirm('Quieres Borrar?')">
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
