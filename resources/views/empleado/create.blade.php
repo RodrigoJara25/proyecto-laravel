@@ -9,7 +9,6 @@
 <body>
     <form class="m-5" action="{{url('/empleado')}}" method="post" enctype="multipart/form-data">
         @csrf
-
         <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre">
         <br>
         <input class="form-control" type="text" name="ApellidoPaterno" id="ApellidoPaterno" placeholder="Apellido Paterno">
@@ -26,7 +25,6 @@
         <input class="form-control" type="file" name="Foto" id="Foto">
         <br>
         <input class="form-control" type="submit" value="Guardar">
-
     </form>
 </body>
 </html>

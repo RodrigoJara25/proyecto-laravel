@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmpleadoController extends Controller
 {
@@ -54,17 +55,42 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
         //
+        $empleado = Empleado::findOrFail($id);
+        return view('empleado.edit', compact('empleado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request, $id)
     {
-        //
+        // recibe todos los datos a excepcion del token y del metodo
+        $datosEmpleado = $request->except(['_token', '_method']);
+
+        // Verificar si se ha subido una nueva imagen
+        if ($request->hasFile('Foto')) {
+            // Obtener el empleado actual
+            $empleado = Empleado::findOrFail($id);
+
+            // Eliminar la imagen anterior si existe
+            if ($empleado->Foto) {
+                Storage::delete('public/'.$empleado->Foto);
+            }
+
+            // Guardar la nueva imagen
+            $fotoPath = $request->file('Foto')->store('empleados', 'public');
+            $datosEmpleado['Foto'] = $fotoPath;
+        }
+
+        Empleado::where('id','=',$id)->update($datosEmpleado);
+
+        //if($request->hasFile('Foto')){}
+
+        $empleado = Empleado::findOrFail($id);
+        return view('empleado.edit', compact('empleado'));
     }
 
     /**
@@ -75,9 +101,5 @@ class EmpleadoController extends Controller
         //
         Empleado::destroy($id);
         return redirect('/empleado');
-
-
-
-
     }
 }

@@ -17,6 +17,7 @@
                 <th>Nombre</th>
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
+                <th>Edad</th>
                 <th>Correo</th>
                 <th>Acciones</th>
             </tr>
@@ -25,12 +26,19 @@
             @foreach ($empleados as $empleado)
             <tr>
                 <td>{{ $empleado->id }}</td>
-                <td>{{ $empleado->Foto }}</td>
+                <td>
+                <img src="{{ asset('storage/'.$empleado->Foto) }}" alt="Foto de {{ $empleado->Nombre }}" width="100">
+                    {{ $empleado->Foto }}
+                </td>
                 <td>{{ $empleado->Nombre }}</td>
                 <td>{{ $empleado->ApellidoPaterno }}</td>
                 <td>{{ $empleado->ApellidoMaterno }}</td>
+                <td>{{ $empleado->Edad }}</td>
                 <td>{{ $empleado->Correo }}</td>
-                <td>Editar | 
+                <td>
+                    <a href="{{url('/empleado/'.$empleado->id.'/edit')}}">Editar</a>
+                
+                    | 
                     
                     <form action="{{url ('/empleado/'.$empleado->id)}}" method="post">
                         @csrf
