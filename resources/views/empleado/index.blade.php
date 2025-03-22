@@ -9,6 +9,7 @@
 <body>
     <h1 class="text-center text-primary m-3">¡Hola, Bootstrap con Vite en Laravel!</h1>
     <h2 class="text-center text-secondary">Empleados</h2>
+    <a class="btn btn-primary m-3 ms-5" href="{{url('empleado/create')}}">Registrar nuevo empleado</a>
     <table class="table">
         <thead class="thead-light">
             <tr>

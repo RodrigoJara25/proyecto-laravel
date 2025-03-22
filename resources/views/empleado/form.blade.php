@@ -11,7 +11,9 @@
         <input class="form-control" type="text" name="Direccion" value="{{$empleado->Direccion}}" id="Direccion" placeholder="Direccion">
         <br>
         <label for="Foto">Foto:</label>
-        {{$empleado->Foto}}
+        <img src="{{asset('storage').'/'.$empleado->Foto}}" alt="" width="300">
         <input class="form-control" type="file" name="Foto" id="Foto">
         <br>
-        <input class="form-control" type="submit" value="Guardar">
+<input class="form-control" type="submit" value="Guardar">
+<br>
+<a class="btn btn-primary m-3 ms-5" href="{{url('empleado')}}">Regresar</a>

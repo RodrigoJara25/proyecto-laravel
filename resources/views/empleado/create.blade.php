@@ -26,5 +26,7 @@
         <br>
         <input class="form-control" type="submit" value="Guardar">
     </form>
+    <br>
+    <a class="btn btn-primary m-3 ms-5" href="{{url('empleado')}}">Regresar</a>
 </body>
 </html>
