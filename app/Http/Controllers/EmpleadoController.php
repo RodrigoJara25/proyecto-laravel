@@ -41,7 +41,8 @@ class EmpleadoController extends Controller
         }
         Empleado::insert($datosEmpleado);   // Hacemos un Insert de los Datos en la Tabla 'empleados'
 
-        return response()->json($datosEmpleado);
+        // return response()->json($datosEmpleado);
+        return redirect('empleado')->with('mensaje', 'Empleado registrado con éxito');
     }
 
     /**
@@ -108,6 +109,6 @@ class EmpleadoController extends Controller
         // Eliminar el empleado de la base de datos
         $empleado->delete();
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with('mensaje', 'Empleado eliminado con exito');
     }
 }
