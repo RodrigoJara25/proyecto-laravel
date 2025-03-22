@@ -19,7 +19,9 @@
 
         <h1 class="text-center text-primary m-3">¡Hola, Bootstrap con Vite en Laravel!</h1>
         <h2 class="text-center text-secondary">Empleados</h2>
-        <a class="btn btn-primary m-3 ms-5" href="{{url('empleado/create')}}">Registrar nuevo empleado</a>
+
+        <a class="btn btn-success m-3 ms-5" href="{{url('empleado/create')}}">Registrar nuevo empleado</a>
+
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -47,21 +49,19 @@
                     <td>{{ $empleado->Edad }}</td>
                     <td>{{ $empleado->Correo }}</td>
                     <td>
-                        <a href="{{url('/empleado/'.$empleado->id.'/edit')}}">Editar</a>
-                    
-                        | 
+                        <a href="{{url('/empleado/'.$empleado->id.'/edit')}}" class="btn btn-warning">Editar</a>
                         
-                        <form action="{{url ('/empleado/'.$empleado->id)}}" method="post">
+                        <form action="{{url ('/empleado/'.$empleado->id)}}" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input type="submit" value="Eliminar" onclick="return confirm('Quieres Borrar?')">
+                            <input class="btn btn-danger" type="submit" value="Eliminar" onclick="return confirm('Quieres Borrar?')">
                         </form>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        
+
     </div>
     @endsection
 </body>

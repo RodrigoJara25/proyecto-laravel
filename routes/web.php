@@ -18,9 +18,9 @@ Route::get('/', function () {
 Route::get('/empleado/create', [EmpleadoController::class,'create']); */
 
 // Con esto se crea una ruta hacia todos los documentos de la carpeta empleados
-Route::resource('empleado', EmpleadoController::class);
+Route::resource('empleado', EmpleadoController::class)->middleware('auth'); // ->middleware('auth') es para indicar que debe respetar la autenticacion o si no no pdora acceder
 
-Auth::routes();
+Auth::routes(['register'=>false, 'reset'=>false]);  // indicamos que valores queremos ocultar
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
 
