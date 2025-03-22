@@ -40,7 +40,7 @@
                 <tr>
                     <td>{{ $empleado->id }}</td>
                     <td>
-                    <img src="{{ asset('storage/'.$empleado->Foto) }}" alt="Foto de {{ $empleado->Nombre }}" width="100">
+                    <img class="img-thumbnail" src="{{ asset('storage/'.$empleado->Foto) }}" alt="Foto de {{ $empleado->Nombre }}" width="100">
                         {{ $empleado->Foto }}
                     </td>
                     <td>{{ $empleado->Nombre }}</td>

@@ -15,7 +15,7 @@
         <form class="m-5" action="{{url('/empleado/'.$empleado->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             {{method_field('PATCH')}}
-            @include('empleado.form', ['modo'=>'Editar'])
+            @include('empleado.form', ['modo'=>'Confirmar'])
         </form>
     </div>
     @endsection

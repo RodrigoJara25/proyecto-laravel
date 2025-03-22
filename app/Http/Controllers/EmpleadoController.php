@@ -32,7 +32,21 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $campos = [
+            'Nombre'=>'required|string|max:100',
+            'ApellidoPaterno'=>'required|string|max:100',
+            'ApellidoMaterno'=>'required|string|max:100',
+            'Correo'=>'required|email',
+            'Edad'=>'required|int',
+            'Direccion'=>'required|string',
+            'Foto'=>'required|max:100|mimes:jpg.png',
+        ];
+        $mensaje = [
+            'required'=>'El :attribute es requerido',
+            'Foto.required'=>'La foto es requerida',
+        ];
+        $this->validate($request, $campos, $mensaje);
+
         // Recibimos la informacion 
         // $datosEmpleado = request()->all();
         $datosEmpleado = request()->except('_token');
@@ -68,6 +82,22 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
+        $campos = [
+            'Nombre'=>'required|string|max:100',
+            'ApellidoPaterno'=>'required|string|max:100',
+            'ApellidoMaterno'=>'required|string|max:100',
+            'Correo'=>'required|email',
+            'Edad'=>'required|int',
+            'Direccion'=>'required|string',
+            'Foto'=>'required|max:100|mimes:jpg.png',
+        ];
+        $mensaje = [
+            'required'=>'El :attribute es requerido',
+            'Foto.required'=>'La foto es requerida',
+        ];
+        $this->validate($request, $campos, $mensaje);
+        
         // recibe todos los datos a excepcion del token y del metodo
         $datosEmpleado = $request->except(['_token', '_method']);
 
